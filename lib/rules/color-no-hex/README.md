@@ -66,3 +66,40 @@ a { color: rgb(0, 0, 0); }
 ```css
 a { color: rgba(0, 0, 0, 1); }
 ```
+
+## Optional secondary options
+
+### `ignore`
+
+```json
+{ "ignore": ["array", "of", "options"] }
+```
+
+#### `"custom-property-fallbacks"`
+
+Ignore hex colors that are the fallback for custom properties in `var()` functions.
+
+Given:
+
+```json
+{
+  "color-no-hex": [true, { "ignore": ["custom-property-fallbacks"] }]
+}
+```
+
+The following patterns are _not_ considered problems:
+
+<!-- prettier-ignore -->
+```css
+a { color: var(--foo, #fff); }
+```
+
+<!-- prettier-ignore -->
+```css
+a { color: var(--foo, #ffffff); }
+```
+
+<!-- prettier-ignore -->
+```css
+a { color: var(--foo, var(--bar, #123456aa)); }
+```

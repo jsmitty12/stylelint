@@ -572,7 +572,11 @@ declare namespace stylelint {
 			{ ignoreProperties: OneOrMany<StringOrRegex>; ignore: OneOrMany<'inside-function'> },
 			AutofixMessage & RejectedMessage<[keyword: string]>
 		>;
-		'color-no-hex': CoreRule<true, {}, RejectedMessage<[hex: string]>>;
+		'color-no-hex': CoreRule<
+			true,
+			{ ignore: OneOrMany<'custom-property-fallbacks'> },
+			RejectedMessage<[hex: string]>
+		>;
 		'color-no-invalid-hex': CoreRule<true, {}, RejectedMessage<[hex: string]>>;
 		'comment-empty-line-before': CoreRule<
 			'always' | 'never',
