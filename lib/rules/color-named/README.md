@@ -166,6 +166,30 @@ a {
 }
 ```
 
+#### `"custom-property-fallbacks"`
+
+Ignore colors that are the fallback for custom properties in `var()` functions.
+
+Given:
+
+```json
+{
+  "color-named": ["never", { "ignore": ["custom-property-fallbacks"] }]
+}
+```
+
+The following patterns are _not_ considered problems:
+
+<!-- prettier-ignore -->
+```css
+a { color: var(--foo, red); }
+```
+
+<!-- prettier-ignore -->
+```css
+a { color: var(--foo, var(--bar, red)); }
+```
+
 ### `ignoreProperties`
 
 ```json
